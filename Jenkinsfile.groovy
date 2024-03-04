@@ -31,7 +31,7 @@ node('built-in') {
                 tvShowImage.push()
             }
 
-        sh "docker rmi hoangtan250997/kafka_producer -f || true"
+        sh "docker rmi registry.hub.docker.com/hoangtan250997/kafka_producer -f || true"
     }
 
     stage('Pull and start new container') {
@@ -48,11 +48,11 @@ node('built-in') {
             remote.password = serverPassword
             remote.allowAnyHosts = true
             sshCommand remote: remote, command: """docker stop ${CONTAINER_NAME} || true && docker rm ${CONTAINER_NAME} || true"""
-            sshCommand remote: remote, command: """docker rmi hoangtan250997/kafka_producer -f || true"""
+            sshCommand remote: remote, command: """docker rmi registry.hub.docker.com/hoangtan250997/kafka_producer -f || true"""
             withCredentials([usernamePassword(credentialsId: 'docker-registry-user', usernameVariable: 'dockerRegistryAccountName', passwordVariable: 'dockerRegistryAccountPassword')])
                     {
                 sshCommand remote: remote, command: """docker login --username ${dockerRegistryAccountName} --password '${dockerRegistryAccountPassword}'"""
-                sshCommand remote: remote, command: """docker pull hoangtan250997/kafka_producer"""
+                sshCommand remote: remote, command: """docker pull registry.hub.docker.com/hoangtan250997/kafka_producer"""
                 sshCommand remote: remote, command: """docker run -d --name ${CONTAINER_NAME} \
 					-e TZ=Asia/Ho_Chi_Minh\
                     -p ${SPRING_BOOT_PORT}:8080 \
