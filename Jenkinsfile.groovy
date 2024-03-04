@@ -61,7 +61,7 @@ node('built-in') {
                         "topic.name": "${TOPIC}", \
                         "spring.kafka.bootstrap-servers": "${KAFKA}"}' \
 					--restart unless-stopped \
-					registry.hub.docker.com/hoangtan250997/kafka_producer""
+					registry.hub.docker.com/hoangtan250997/kafka_producer"""
         }
     }
 
