@@ -31,7 +31,7 @@ node('built-in') {
                 tvShowImage.push()
             }
 
-        sh "docker rmi registry.hub.docker.com/hoangtan250997/kafka_producer -f || true"
+        sh "docker rmi -f registry.hub.docker.com/hoangtan250997/kafka_producer || true"
     }
 
     stage('Pull and start new container') {
