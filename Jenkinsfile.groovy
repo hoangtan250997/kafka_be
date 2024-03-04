@@ -1,7 +1,7 @@
 node('built-in') {
 
-//    jdk = tool name: 'JDK-17'
-//    env.JAVA_HOME = "${jdk}"
+    jdk = tool name: 'JDK-17'
+    env.JAVA_HOME = "${jdk}"
 
     /* Stage checkout, will get the source code from git server */
     stage('Checkout') {
