@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("/food")
+@RequestMapping("/${topic.name}")
 public class OrderController {
     private final OrderService orderService;
 
