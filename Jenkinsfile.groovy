@@ -48,7 +48,8 @@ node('built-in') {
             remote.password = serverPassword
             remote.allowAnyHosts = true
             sshCommand remote: remote, command: """docker stop ${CONTAINER_NAME} || true && docker rm ${CONTAINER_NAME} || true"""
-            sshCommand remote: remote, command: """docker rmi registry.hub.docker.com/hoangtan250997/kafka_producer -f || true"""
+            sshCommand remote: remote, command: """docker rmi -f registry.hub.docker.com/hoangtan250997/kafka_producer || true"""
+            sshCommand remote: remote, command: """docker rmi -f hoangtan250997/kafka_producer || true"""
             withCredentials([usernamePassword(credentialsId: 'docker-registry-user', usernameVariable: 'dockerRegistryAccountName', passwordVariable: 'dockerRegistryAccountPassword')])
                     {
                 sshCommand remote: remote, command: """docker login --username ${dockerRegistryAccountName} --password '${dockerRegistryAccountPassword}'"""
