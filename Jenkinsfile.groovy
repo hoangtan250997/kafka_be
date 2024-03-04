@@ -58,6 +58,8 @@ node('built-in') {
                     -p ${SPRING_BOOT_PORT}:8080 \
                     -e SPRING_APPLICATION_JSON='{
                         "topic.name": "${TOPIC}"}' \
+                        "spring.kafka.bootstrap-servers": "${KAFKA}"}' \\
+
 					--restart unless-stopped \
 					hoangtan250997/kafka_producer"""
         }
