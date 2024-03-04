@@ -56,7 +56,6 @@ node('built-in') {
                 sshCommand remote: remote, command: """docker run -d --name ${CONTAINER_NAME} \
 					-e TZ=Asia/Ho_Chi_Minh\
                     -p ${SPRING_BOOT_PORT}:8080 \
-//                    -p ${SAYHI_SOCKET_SERVER_PORT}:4001\
 					--restart unless-stopped \
 					hoangtan250997/kafka_producer"""
         }
